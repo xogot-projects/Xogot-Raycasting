@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://drk8kfemqdome"]
+
+[resource]
+albedo_color = Color(0.827927, 0.689102, 0, 1)
+metallic = 1.0
+metallic_specular = 0.06
+roughness = 0.6
+emission_enabled = true
+emission = Color(0.944077, 0.930786, 0, 1)
+emission_energy_multiplier = 0.52

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bgabgh0f87hth"]
+
+[ext_resource type="Script" uid="uid://cy3o44y6jinxw" path="res://scripts/camera_look.gd" id="1_15axo"]
+
+[node name="CamControl" type="Node3D" unique_id=1262711068]
+script = ExtResource("1_15axo")
+tilt_range = 45
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1039939058]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Pivot" unique_id=1087347738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+collision_mask = 2
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Pivot/SpringArm3D" unique_id=1519525995]

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cfmoqxpbs5oic"]
+
+[ext_resource type="Script" uid="uid://xp0ue3y06i01" path="res://scripts/player_raycast.gd" id="1_chitn"]
+[ext_resource type="PackedScene" uid="uid://cyatufhcd8l10" path="res://models/axolotl.glb" id="3_x2ivp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_chitn"]
+radius = 0.2861328
+height = 2.020963
+
+[node name="Player" type="CharacterBody3D" unique_id=391228800]
+collision_mask = 2
+wall_min_slide_angle = 0.26209256
+floor_stop_on_slope = false
+script = ExtResource("1_chitn")
+
+[node name="axolotl" parent="." unique_id=963228877 instance=ExtResource("3_x2ivp")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Skeleton3D" parent="axolotl/Axolotl Rig" index="0"]
+bones/1/position = Vector3(-0.014018454, -7.195187, -1.8723661)
+bones/1/rotation = Quaternion(0.99874145, 0.012839604, -0.038456928, -0.029525887)
+bones/2/position = Vector3(0.01584835, -1.4411411, -1.342912)
+bones/2/rotation = Quaternion(-0.014176759, 0.99916315, -0.005429242, -0.03798142)
+bones/3/rotation = Quaternion(-0.0013969367, -0.051220596, 0.9974764, 0.04914747)
+bones/3/scale = Vector3(0.99999994, 0.9999993, 1.0000172)
+bones/4/rotation = Quaternion(0.063835315, -0.0003065622, 0.042945646, 0.9970359)
+bones/5/rotation = Quaternion(0.11877306, -0.0005540461, 0.069267966, 0.9905022)
+bones/6/rotation = Quaternion(0.031087052, -0.00011270125, 0.006084772, 0.9994982)
+bones/7/rotation = Quaternion(0.031083379, 2.3504486e-05, 0.009986546, 0.9994669)
+bones/8/rotation = Quaternion(-0.4441659, 0.87162167, -0.20194307, 0.04702452)
+bones/9/rotation = Quaternion(0.5938897, -7.311424e-07, 0.22162835, 0.7734183)
+bones/10/rotation = Quaternion(-0.06818186, -3.550708e-07, -1.01388096e-07, 0.9976729)
+bones/11/rotation = Quaternion(-0.33188045, -0.25324568, 0.76265436, 0.49404484)
+bones/12/rotation = Quaternion(-0.42102844, 5.042213e-07, -0.42795798, 0.7997418)
+bones/13/rotation = Quaternion(-0.065243855, -0.06700035, -0.02890326, 0.99519795)
+bones/14/rotation = Quaternion(-0.29498905, 0.2558481, -0.77185416, 0.50176126)
+bones/15/rotation = Quaternion(-0.39382395, 1.0080245e-06, 0.40030655, 0.8274402)
+bones/16/position = Vector3(0.8623433, 1.8332171, -0.01738664)
+bones/16/rotation = Quaternion(0.57131535, -0.017929848, 0.8200989, -0.02674241)
+bones/17/position = Vector3(-1.2894654e-06, 2.9200044e-07, -3.3884982e-07)
+bones/17/rotation = Quaternion(-0.14550012, 0.15911214, 0.9730552, -0.08171202)
+bones/18/position = Vector3(0.97626644, -0.85119456, -0.2587763)
+bones/18/rotation = Quaternion(0.9825179, 0.016998958, -0.18336287, -0.027343536)
+bones/19/position = Vector3(2.2113436e-07, -1.19138704e-07, 5.090564e-07)
+bones/19/rotation = Quaternion(0.93377167, -0.009235183, -0.29035926, -0.20898977)
+bones/22/rotation = Quaternion(0.30161673, 0.10474099, 0.42414612, 0.84744126)
+bones/23/rotation = Quaternion(0.4723158, -1.0185344e-07, -0.1762577, 0.86362666)
+bones/24/position = Vector3(-0.88585067, 1.7842512, 0.11600432)
+bones/24/rotation = Quaternion(-0.5065653, -0.031786706, 0.8616003, 0.0051232046)
+bones/25/position = Vector3(1.3407864e-06, 6.614705e-07, -4.7071e-07)
+bones/26/position = Vector3(-0.88548315, -0.9033413, -0.11672082)
+bones/26/rotation = Quaternion(0.9937087, 0.0084069865, 0.107267775, -0.031079834)
+bones/27/position = Vector3(-3.1564875e-07, 3.3896768e-08, 8.4318674e-07)
+bones/27/rotation = Quaternion(0.9337715, 0.009231419, 0.29036015, -0.20898941)
+
+[node name="Head" parent="axolotl/Axolotl Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.9893511, 0.0662714, -0.12958458, 0.14006612, -0.19147684, 0.97145146, 0.039567035, -0.9792572, -0.19872022, -0.042663876, 1.3111807, -2.6829164)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1503654066]
+transform = Transform3D(1.9106853e-15, 4.3711385e-08, 0.9999999, 0.99999994, -4.3711385e-08, 0, 4.3711385e-08, 0.9999999, -4.3711385e-08, -0.0019538144, 0.27253914, -0.47761786)
+shape = SubResource("CapsuleShape3D_chitn")
+
+[node name="FrontRay" type="RayCast3D" parent="." unique_id=1845350282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7839501)
+collision_mask = 2
+
+[node name="BackRay" type="RayCast3D" parent="." unique_id=249582583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.008475006)
+collision_mask = 2
+
+[editable path="axolotl"]

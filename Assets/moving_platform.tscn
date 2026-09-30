@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dibtc3183l1dc"]
+
+[ext_resource type="Material" uid="uid://epgcvgorntss" path="res://Materials/platform.tres" id="1_j6g82"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xejaq"]
+material = ExtResource("1_j6g82")
+size = Vector3(2, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmc8v"]
+size = Vector3(2, 1, 4)
+
+[sub_resource type="Animation" id="Animation_p7v5d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_onvas"]
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ln7n4"]
+_data = {
+&"RESET": SubResource("Animation_p7v5d"),
+&"elevator": SubResource("Animation_onvas")
+}
+
+[node name="Node3D" type="Node3D" unique_id=1869242885]
+
+[node name="MovingPlatform" type="AnimatableBody3D" parent="." unique_id=1979019044]
+collision_layer = 2
+
+[node name="BoxMesh" type="MeshInstance3D" parent="MovingPlatform" unique_id=1422967316]
+mesh = SubResource("BoxMesh_xejaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlatform" unique_id=453148903]
+shape = SubResource("BoxShape3D_rmc8v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735438759]
+libraries/ = SubResource("AnimationLibrary_ln7n4")
+autoplay = &"elevator"

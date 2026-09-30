@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnhpwjf2s5427"]
+
+[resource]
+resource_name = "Translucent Accents"
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906326, 0.681183, 0.254105, 0.746835)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0

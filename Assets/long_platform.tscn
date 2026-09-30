@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwyoo6mw17jnp"]
+
+[ext_resource type="Material" uid="uid://epgcvgorntss" path="res://Materials/platform.tres" id="1_0csbm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0dwx2"]
+uv2_padding = 1.32
+size = Vector3(8, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmilg"]
+size = Vector3(8, 1, 2)
+
+[node name="Platform" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_0dwx2")
+surface_material_override/0 = ExtResource("1_0csbm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fmilg")

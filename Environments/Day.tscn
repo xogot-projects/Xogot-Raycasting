@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bxe5mrkpnkirw"]
+
+[ext_resource type="PackedScene" uid="uid://cohb8et7ekgcb" path="res://Assets/platform.tscn" id="1_33n4h"]
+[ext_resource type="Script" uid="uid://ck231p4rb1d66" path="res://scripts/game.gd" id="1_j5byn"]
+[ext_resource type="PackedScene" uid="uid://cfmoqxpbs5oic" path="res://Assets/player.tscn" id="2_xnw57"]
+[ext_resource type="PackedScene" uid="uid://dibtc3183l1dc" path="res://Assets/moving_platform.tscn" id="4_j5byn"]
+[ext_resource type="PackedScene" uid="uid://bwyoo6mw17jnp" path="res://Assets/long_platform.tscn" id="5_dk53w"]
+[ext_resource type="PackedScene" uid="uid://bgabgh0f87hth" path="res://Assets/cam_control.tscn" id="6_iyuv4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xnw57"]
+sky_top_color = Color(0, 0.835434, 0.843491, 1)
+sky_horizon_color = Color(0.891807, 1.1146, 1.29163, 1)
+ground_bottom_color = Color(0, 0.514252, 0.547699, 1)
+ground_horizon_color = Color(0.630295, 0.88031, 1, 1)
+ground_curve = 0.400853
+
+[sub_resource type="Sky" id="Sky_ws0jp"]
+sky_material = SubResource("ProceduralSkyMaterial_xnw57")
+
+[sub_resource type="Environment" id="Environment_j5byn"]
+background_mode = 2
+sky = SubResource("Sky_ws0jp")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dk53w"]
+size = Vector3(100, 1, 100)
+
+[node name="Game" type="Node3D" unique_id=1436088416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.590353, 0, -2.5527163)
+script = ExtResource("1_j5byn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1229400544]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 8.26385, -5.87747)
+light_color = Color(1, 0.721237, 0.536575, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1129912311]
+environment = SubResource("Environment_j5byn")
+
+[node name="Platform" parent="." unique_id=902689470 instance=ExtResource("1_33n4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8615808, -8.66884)
+
+[node name="Platform3" parent="." unique_id=48535670 instance=ExtResource("1_33n4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7854962, -5.8329306)
+
+[node name="Platform4" parent="." unique_id=891509947 instance=ExtResource("1_33n4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6872, 5.27464)
+
+[node name="MovingPlatform" parent="." unique_id=1095529336 instance=ExtResource("4_j5byn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.689578)
+
+[node name="Platform2" parent="." unique_id=324859453 instance=ExtResource("5_dk53w")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0.1721698, 0.9850673, 7.525781e-09, -0.9850673, 0.1721698, -4.305866e-08, 0, 0, 0)
+collision_layer = 2
+
+[node name="FallSensor" type="Area3D" parent="." unique_id=403930450]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallSensor" unique_id=1037315102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.7605414, 0)
+shape = SubResource("BoxShape3D_dk53w")
+
+[node name="CamControl" parent="." unique_id=1262711068 instance=ExtResource("6_iyuv4")]
+
+[node name="Player" parent="." unique_id=32014216 instance=ExtResource("2_xnw57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23607963, 3.2575142, 5.8215604)
+move_speed = null
+turn_speed = null
+max_height = null
+air_speed = null
+fall_weight = null
+partial_momentum = null
+jump_steering = null
+
+[connection signal="body_entered" from="FallSensor" to="." method="_on_body_entered"]
+
+[editable path="MovingPlatform"]
